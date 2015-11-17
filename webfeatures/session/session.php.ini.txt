@@ -1,0 +1,70 @@
+141:; session.gc_divisor
+146:; session.hash_bits_per_character
+1345:; http://php.net/session.save-handler
+1346:session.save_handler = files
+1354:;     session.save_path = "N;/path"
+1370:;     session.save_path = "N;MODE;/path"
+1374:; http://php.net/session.save-path
+1375:;session.save_path = "/var/lib/php5/sessions"
+1383:session.use_strict_mode = 0
+1386:; http://php.net/session.use-cookies
+1387:session.use_cookies = 1
+1389:; http://php.net/session.cookie-secure
+1390:;session.cookie_secure =
+1396:; http://php.net/session.use-only-cookies
+1397:session.use_only_cookies = 1
+1400:; http://php.net/session.name
+1401:session.name = PHPSESSID
+1404:; http://php.net/session.auto-start
+1405:session.auto_start = 0
+1408:; http://php.net/session.cookie-lifetime
+1409:session.cookie_lifetime = 0
+1412:; http://php.net/session.cookie-path
+1413:session.cookie_path = /
+1416:; http://php.net/session.cookie-domain
+1417:session.cookie_domain =
+1420:; http://php.net/session.cookie-httponly
+1421:session.cookie_httponly =
+1424:; http://php.net/session.serialize-handler
+1425:session.serialize_handler = php
+1429:; gc_probability/gc_divisor. Where session.gc_probability is the numerator
+1431:; when the session.gc_divisor value is 100 will give you approximately a 1% chance
+1436:; http://php.net/session.gc-probability
+1437:session.gc_probability = 0
+1441:; gc_probability/gc_divisor. Where session.gc_probability is the numerator and
+1442:; session.gc_divisor is the denominator in the equation. Setting this value to 1
+1443:; when the session.gc_divisor value is 100 will give you approximately a 1% chance
+1450:; http://php.net/session.gc-divisor
+1451:session.gc_divisor = 1000
+1455:; http://php.net/session.gc-maxlifetime
+1456:session.gc_maxlifetime = 1440
+1459:;       (see session.save_path above), then garbage collection does *not*
+1463:;       setting session.gc_maxlifetime to 1440 (1440 seconds = 24 minutes):
+1469:; http://php.net/session.referer-check
+1470:session.referer_check =
+1473:; http://php.net/session.entropy-length
+1474:;session.entropy_length = 32
+1477:; http://php.net/session.entropy-file
+1483:;session.entropy_file = /dev/urandom
+1487:; http://php.net/session.cache-limiter
+1488:session.cache_limiter = nocache
+1491:; http://php.net/session.cache-expire
+1492:session.cache_expire = 180
+1503:; http://php.net/session.use-trans-sid
+1504:session.use_trans_sid = 0
+1513:; http://php.net/session.hash-function
+1514:session.hash_function = 0
+1525:; http://php.net/session.hash-bits-per-character
+1526:session.hash_bits_per_character = 5
+1543:; http://php.net/session.upload-progress.enabled
+1544:;session.upload_progress.enabled = On
+1551:; http://php.net/session.upload-progress.cleanup
+1552:;session.upload_progress.cleanup = On
+1558:; http://php.net/session.upload-progress.prefix
+1559:;session.upload_progress.prefix = "upload_progress_"
+1566:; http://php.net/session.upload-progress.name
+1567:;session.upload_progress.name = "PHP_SESSION_UPLOAD_PROGRESS"
+1574:; http://php.net/session.upload-progress.freq
+1575:;session.upload_progress.freq =  "1%"
+1581:; http://php.net/session.upload-progress.min-freq
+1582:;session.upload_progress.min_freq = "1"
