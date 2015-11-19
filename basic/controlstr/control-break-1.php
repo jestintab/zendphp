@@ -1,8 +1,8 @@
 <?php
 $arr = array('one', 'two', 'three', 'four', 'stop', 'five');
 while (list(, $val) = each($arr)) {
-    if ($val == 'five') {
-        break;    /* You could also write 'break 1;' here. */
+    if ($val == 'stop') {
+        break ;    /* You could also write 'break 1;' here. */
     }
     echo "$val<br />\n";
 }
@@ -11,6 +11,7 @@ while (list(, $val) = each($arr)) {
 $i = 0;
 while (++$i) {
 	echo $i , "\n";
+//break;
     switch ($i) {
     case 5:
         echo "At 5<br />\n";
@@ -24,5 +25,8 @@ while (++$i) {
     default:
         break;
     }
+    //echo "string";
+
 }
+echo "strings"; // breaks exits another one loop after it
 ?>

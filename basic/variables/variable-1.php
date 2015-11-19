@@ -12,8 +12,13 @@ echo "$var, $Var" ."\n";      // outputs "Bob, Joe"
 #$4site = 'not yet';     // invalid; starts with a number echo $4site."\n"
 
 $_4site = 'not yet';    // valid; starts with an underscore
-echo $_4site."\n"
+echo $_4site."\n";
 
 $täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.
-echo "$täyte"."\n"
+echo "$täyte"."\n";
+//sName 
+//sNAme 
+//Bob, Joe 
+//not yet 
+//mansikka
 ?>
