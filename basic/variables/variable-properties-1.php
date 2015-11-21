@@ -21,7 +21,7 @@ $end   = 'ar';
 echo 'LINE : ' . __LINE__ . ' ' . $foo->{$start . $end} . "\n";
 
 $arr = 'arr';
-echo 'LINE : ' . __LINE__ . ' ' . $foo->$arr[1] . "\n";
-echo 'LINE : ' . __LINE__ . ' ' . $foo->{$arr}[1] . "\n";
+echo 'LINE : ' . __LINE__ . ' ' . $foo->$arr[1] . "\n"; //accessing $arr variable
+echo 'LINE : ' . __LINE__ . ' ' . $foo->{$arr}[1] . "\n"; //accessing $array
 
 ?>

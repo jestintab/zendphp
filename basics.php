@@ -214,3 +214,81 @@ echo "$täyte"."\n";
 //not yet 
 //mansikka
 ?>
+<?php
+$foo = 'Bob';              // Assign the value 'Bob' to $foo
+$bar = &$foo;              // Reference $foo via $bar.
+$car = &$bar;
+
+$bar = "My name is $bar";  // Alter $bar...
+
+echo $bar ."\n\n";
+echo $foo ."\n\n";                 // $foo, $car are altered too.
+echo $car ."\n\n";                 // $foo, $car are altered too.
+//My name is bob
+//My name is bob
+//My name is bob
+?>
+
+
+<?php
+#Example #1 Valid and invalid constant names
+
+// Valid constant names
+define("FOO",     "something");
+define("FOO2",    "something else");
+define("FOO_BAR", "something more");
+
+// Invalid constant names
+define("2FOO",    "something");
+
+// This is valid, but should be avoided:
+// PHP may one day provide a magical constant
+// that will break your script
+define("__FOO__", "something"); 
+?>
+
+<?php
+//variables of variable
+$a = 'hello';
+$$a = 'world';
+print "\n";
+print "$a ${$a} \n"; //hello world - $$a //hello $hello
+print "$a $hello \n";//hello world
+
+$a = 'dhananjay';
+$$a = 'anupama';
+print "\n";
+print "$a ${$a} \n"; //dhananjay anupama
+print "$a $dhananjay \n"; //dhananjay anupama
+
+?>
+
+<?php 
+//variable properties
+class foo {
+
+    var $bar = 'I am bar.';
+    var $arr = array('I am A.', 'I am B.', 'I am C.');
+    var $r   = 'I am r.';
+}
+
+$foo = new foo();
+
+$bar = 'bar';
+
+$baz = array('foo', 'bar', 'baz', 'quux');
+
+echo  $foo->$bar . "\n"; //I am bar.
+
+echo $foo->$baz[1] . "\n"; //I am bar.
+
+$start = 'b';
+$end   = 'ar';
+
+echo $foo->{$start . $end} . "\n"; //I am bar.
+
+$arr = 'arr';
+echo $foo->$arr[1] . "\n"; //accessing $arr variable //I am r.
+echo $foo->{$arr}[1] . "\n"; //accessing $array //I am B.
+
+?>

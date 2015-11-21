@@ -1,7 +1,23 @@
+<!-- Array basics -->
+<?php
+$array = array(
+    "foo" => "bar",
+    "bar" => "foo",
+);
 
-<!-- 
-ArrayObject
-----------
+print_r($array); //Array ( [foo] => bar [bar] => foo ) 
+
+echo "<br/>\n";
+// as of PHP 5.4
+$array = [
+    "foo" => "bar",
+    "bar" => "foo",
+];
+print_r($array); //Array ( [foo] => bar [bar] => foo ) 
+echo "<br/>\n";
+?>
+
+<!-- ArrayObject
 The way objects are used in PHP 5, assigning them doesn’t copy them; it copies their location in a lookup table for later retrieval. This means that an object modified in one area of the application reflects those changes everywhere it has been passed; there is no need to do any extra work to ensure that code using your objects has those changes. Arrays, on the other hand, are copied on assignment, meaning that changes made in one component of the application will not be reflected in the original array, unless you passed the array by reference. But because ArrayObject behaves like an array while still following the rules of an object, it has a number of distinct advantages. 
 
 there are a number of features that cannot be used with this object, including most of the array_* functions in the PHP library
