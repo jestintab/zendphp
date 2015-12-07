@@ -4,7 +4,7 @@
 		$count++;
 		echo $count;
 	}
-	counter();
-	counter();
-	counter();
+	counter(); //1
+	counter(); //2
+	counter(); //3
 ?>

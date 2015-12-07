@@ -10,7 +10,7 @@ class NotMyClass{
 
 $a = new MyClass;
 
-var_dump($a instanceof MyClass);
+var_dump($a instanceof MyClass);//bool(true) 
 
-var_dump($a instanceof NotMyClass);
+var_dump($a instanceof NotMyClass);//bool(false) 
 ?>

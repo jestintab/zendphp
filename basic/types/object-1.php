@@ -6,6 +6,6 @@ class foo{
 }
 
 $bar = new foo;
-$bar->do_foo() ;
+$bar->do_foo() ;//Doing foo.
 echo "\n\n";
 ?>

@@ -11,6 +11,6 @@ class MyClass implements MyInterface
 
 $a = new MyClass;
 
-var_dump($a instanceof MyClass);
-var_dump($a instanceof MyInterface);
+var_dump($a instanceof MyClass); //bool(true)
+var_dump($a instanceof MyInterface); //bool(true)
 ?>

@@ -16,5 +16,5 @@ $numbers = range(1, 5);
 // range
 $new_numbers = array_map($double, $numbers);
 
-print implode(' ', $new_numbers) . "\n\n";
+print implode(' ', $new_numbers) . "\n\n"; //2 4 6 8 10
 ?>

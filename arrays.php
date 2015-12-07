@@ -154,5 +154,159 @@ try {
 }
 ?>
 
+<?php
+#Example #7 Array dereferencing
+function getArray() {
+    return array(1, 2, 3, 5);
+}
 
+// on PHP 5.4
+$secondElement = getArray()[1]; 
+
+print "$secondElement \n\n"; //2
+
+// previously
+$tmp = getArray();
+$secondElement = $tmp[1];
+
+print "$secondElement \n\n Using {}"; //2 Using {}
+
+$tmp = getArray();
+print_r ($tmp{2}); //3
+echo "\n\n Using []"; 
+print "$tmp[2]\n\n";
+//Using [] 3
+
+// or
+list(, , , $lastElement) = getArray();
+
+print "$lastElement\n\n"; //5
+?>
+
+
+<?php
+# array-5 To change a certain value, assign a new value to that element using its key. To remove a key/value pair, call the unset() function on it.
+
+$arr = array(4 => 4, 5 => 1, 6 =>56, 12 => 2);
+
+$arr[] = 56;    // This is the same as $arr[13] = 56;
+                // at this point of the script
+
+$arr["x"] = 42; // This adds a new element to
+                // the array with key "x"
+
+print_r($arr); //Array ( [4] => 4 [5] => 1 [6] => 56 [12] => 2 [13] => 56 [x] => 42 ) 
+                
+unset($arr[12]); // This removes the element from the array
+print_r($arr); //Array ( [4] => 4 [5] => 1 [6] => 56 [13] => 56 [x] => 42 )
+
+$arr[] = 13;    // This is the same as $arr[13] = 13;
+echo "Line 18 ";
+print_r($arr); // Array ( [4] => 4 [5] => 1 [6] => 56 [13] => 56 [x] => 42 [14] => 13 ) 
+                
+unset($arr[14]); // This removes the element from the array
+print_r($arr); //Array ( [4] => 4 [5] => 1 [6] => 56 [13] => 56 [x] => 42 ) 
+
+echo "Line 24 ";
+$arr[] = 15;    // This is the same as $arr[13] = 15;
+print_r($arr); //  Array ( [4] => 4 [5] => 1 [6] => 56 [13] => 56 [x] => 42 [15] => 15 ) 
+
+
+unset($arr);    // This deletes the whole array
+
+print_r($arr); //Notice: Undefined variable: arr in C:\xampp\htdocs\zendphp\basic\types\array-5.php on line 31
+
+
+?>
+
+<?php #Array errors
+#More examples to demonstrate this behaviour:
+// Show all errors including notice, warnings etc
+error_reporting(E_ALL);
+
+$arr = array('fruit' => 'apple', 'veggie' => 'carrot');
+
+// Correct
+print $arr['fruit'] . " Line " . __LINE__ ."\n";  // apple
+print $arr['veggie'] . " Line " . __LINE__ ."\n"; // carrot
+
+// Incorrect.  This works but also throws a PHP error of level E_NOTICE because
+// of an undefined constant named fruit
+// 
+// Notice: Use of undefined constant fruit - assumed 'fruit' in...
+print $arr[fruit] . " Line " . __LINE__ ."\n";    // apple
+
+// This defines a constant to demonstrate what's going on.  The value 'veggie'
+// is assigned to a constant named fruit.
+define('fruit', 'veggie');
+echo fruit . " Line " . __LINE__ ."\n"; //veggie
+echo $arr[fruit] . " Line " . __LINE__ ."\n"; //carrot
+// Notice the difference now
+print $arr['fruit'] . " Line " . __LINE__ ."\n";  // apple
+print $arr[fruit] . " Line " . __LINE__ ."\n";    // carrot
+
+// The following is okay, as it's inside a string. Constants are not looked for
+// within strings, so no E_NOTICE occurs here
+print "Hello $arr[fruit]" . " Line " . __LINE__ ."\n";      // Hello apple
+
+// With one exception: braces surrounding arrays within strings allows constants
+// to be interpreted
+print "Hello {$arr[fruit]}" . " Line " . __LINE__ ."\n";    // Hello carrot
+print "Hello {$arr['fruit']}" . " Line " . __LINE__ ."\n";  // Hello apple
+
+// This will not work, and will result in a parse error, such as:
+// Parse error: parse error, expecting T_STRING' or T_VARIABLE' or T_NUM_STRING'
+// This of course applies to using superglobals in strings as well
+#print "Hello $arr['fruit']" . " Line " . __LINE__ ."\n";print "Hello $_GET['foo']" . " Line " . __LINE__ ."\n";
+
+// Concatenation is another option
+print "Hello " . $arr['fruit'] . " Line " . __LINE__ ."\n"; // Hello apple
+?>
+
+<?php
+#Array do's and don'ts
+// Show all errors
+error_reporting(E_ALL);
+
+$foo[bar] = 'enemy';  //Notice: Use of undefined constant bar - assumed 'bar' in
+echo $foo[bar] . "\n\n"; //Notice: Use of undefined constant bar - assumed 'bar' in
+//enemy
+
+//correct way
+$foo['bar'] = 'enemy';
+echo $foo['bar'] . "\n\n"; //enemy
+
+?>
+
+
+
+<?php
+#Array do's and don'ts
+// Show all errors
+error_reporting(E_ALL);
+
+$colors = array('red', 'blue', 'green', 'yellow');
+
+foreach ($colors as $color) {
+    echo "Do you like $color?\n";
+}
+//Do you like red? Do you like blue? Do you like green? Do you like yellow? 
+echo "\n\n";
+// PHP 5
+foreach ($colors as &$color) {
+    $color = ucwords($color);
+}
+unset($color); /* ensure that following writes to $color will not modify the last array element */
+
+print_r($colors); //Array ( [0] => Red [1] => Blue [2] => Green [3] => Yellow )
+// if &color is not referenced (color) the output will be 
+// Array ( [0] => red [1] => blue [2] => green [3] => yellow )
+
+// Workaround for older versions
+foreach ($colors as $key => $color) {
+    $colors[$key] = strtoupper($color);
+}
+
+print_r($colors); // Array ( [0] => RED [1] => BLUE [2] => GREEN [3] => YELLOW )
+echo "\n\n";
 ?>

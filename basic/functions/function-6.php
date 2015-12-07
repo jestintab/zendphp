@@ -6,14 +6,14 @@ $greet = function($name)
 {
     printf("Hello %s\r\n", $name);
 };
-$greet('World');
-$greet('PHP');
+$greet('World'); //World
+$greet('PHP'); // PHP
 
 $greet2 = function($name)
 {
     return $name . "!! ";
 };
 
-echo $greet2('World');
-echo $greet2('PHP');
+echo $greet2('World'); // World
+echo $greet2('PHP');// PHP
 ?> 

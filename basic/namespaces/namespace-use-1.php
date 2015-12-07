@@ -12,4 +12,6 @@ class foo
 		echo "I m in static file 1" . "\n\n";
 	}
 }
+echo foo();
+
 ?>

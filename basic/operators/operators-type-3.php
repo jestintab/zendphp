@@ -5,5 +5,5 @@ class MyClass
 }
 
 $a = new MyClass;
-var_dump(!($a instanceof stdClass));
+var_dump(!($a instanceof stdClass)); //bool(true)
 ?>

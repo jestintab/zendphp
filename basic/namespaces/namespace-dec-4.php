@@ -14,6 +14,6 @@ $ns1 =  \MyProject\CONNECT_OK;
 
 $ns2 =  \MyProjectAnother\CONNECT_OK;
 
-echo $ns1. "\n\n";
-echo $ns2. "\n\n";
+echo $ns1. "\n\n"; //1
+echo $ns2. "\n\n"; //44
 ?>

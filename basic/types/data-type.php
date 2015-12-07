@@ -12,7 +12,7 @@ if (is_int($an_int)) {
     $an_int += 4;
 }
 
-echo $an_int . "<br/>";  // prints out:  integer
+echo $an_int . "<br/>";  // prints out:  integer //16
 
 // If $a_bool is a string, print it out
 // (does not print out anything)

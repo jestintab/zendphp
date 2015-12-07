@@ -292,3 +292,208 @@ echo $foo->$arr[1] . "\n"; //accessing $arr variable //I am r.
 echo $foo->{$arr}[1] . "\n"; //accessing $array //I am B.
 
 ?>
+
+<?php 
+#Example #1 Callback function examples
+
+// An example callback function
+function my_callback_function() {
+    echo 'Function hello world!' . "\n\n";
+}
+
+// An example callback method
+class MyClass {
+    static function myCallbackMethod() {
+        echo 'Method Hello World!' . "\n\n";
+    }
+}
+
+// Type 1: Simple callback
+echo 'Type 1' . "\n";
+call_user_func('my_callback_function');  // Function hello world!
+
+// Type 2: Static class method call
+echo 'Type 2' . "\n";
+call_user_func(array('MyClass', 'myCallbackMethod')); //Method Hello World! 
+
+// Type 3: Object method call
+echo 'Type 3' . "\n";
+$obj = new MyClass();
+call_user_func(array($obj, 'myCallbackMethod'));  //Method Hello World! 
+
+// Type 4: Static class method call (As of PHP 5.2.3)
+echo 'Type 4' . "\n";
+call_user_func('MyClass::myCallbackMethod');  //Method Hello World! 
+
+// Type 5: Relative static class method call (As of PHP 5.3.0)
+class A {
+    public static function who() {
+        echo "A\n";
+    }
+}
+
+class B extends A {
+    public static function who() {
+        echo "B\n";
+    }
+}
+
+call_user_func(array('B', 'parent::who')); // A
+call_user_func(array('B', 'who')); // B
+call_user_func('B::who'); // B
+?>
+
+<?php
+passthru('clear');
+//exec() is for calling a system command, and perhaps dealing with the output yourself.
+//system() is for executing a system command and immediately displaying the output - presumably text.
+//passthru() is for executing a system command which you wish the raw return from - presumably something binary.
+#Example #2 Callback example using a Closure
+// Our closure
+$double = function($a) {
+    return $a * 2;
+};
+
+
+// This is our range of numbers
+$numbers = range(1, 5);
+
+// Use the closure as a callback here to 
+// double the size of each element in our 
+// range
+$new_numbers = array_map($double, $numbers);
+
+print implode(' ', $new_numbers) . "\n\n"; //2 4 6 8 10
+?>
+
+<?php
+echo "<pre>";
+print_r($_SERVER);
+echo "</pre>";
+//prints out an array contains all info like user agent,refer etc
+?>
+
+<?php //Null-1 //object-2
+$var = NULL;       
+echo "[{$var}{$var}{$var}]" . strlen($var); //[]0
+echo "\n\n";
+?>
+<?php //null
+$obj = (object) 'ciao';
+echo $obj->scalar;  // outputs 'ciao'
+echo "\n\n";
+
+$obj = (object) 12548;
+echo gettype($obj); //object
+echo "\n\n";
+
+echo $obj->scalar;  // outputs '12548'
+echo "\n\n";
+
+$aArr = ['age' => 26, 'name' => 'dhanajay', 'address' => ['add1' => 'address 1', 'add2' => 'address 2'] ];
+print_r($aArr); // Array ( [age] => 26 [name] => dhanajay [address] => Array ( [add1] => address 1 [add2] => address 2 ) )
+$object2 = (object) $aArr;
+
+print_r($object2); // stdClass Object ( [age] => 26 [name] => dhanajay [address] => Array ( [add1] => address 1 [add2] => address 2 ) ) 
+echo "\n\n";
+
+
+$aArr2 = (array) $object2;
+
+print_r($aArr2); // Array ( [age] => 26 [name] => dhanajay [address] => Array ( [add1] => address 1 [add2] => address 2 ) )
+echo "\n\n";
+
+
+echo $object2->age; //26 
+echo "\n\n";
+
+echo $object2->address['add1']; //address 1
+echo "\n\n";
+
+?>
+<?php //Object-1
+class foo{
+    function do_foo(){
+        echo "Doing foo."; 
+    }
+}
+
+$bar = new foo;
+$bar->do_foo() ;//Doing foo.
+echo "\n\n";
+?>
+<?php //set type
+$foo = "d68d5bar,3de"; // string
+$bar = true;   // boolean
+
+echo settype($foo, "integer") . "\n"; // $foo is now 5   (integer) outputs 1
+echo settype($bar, "string") . "\n";  // $bar is now "1" (string) outputs 1
+
+print_r($foo) . "\n"; //0
+
+echo " --- $foo --- $bar " . "\n"; //--- 0 --- 1
+?>
+<?php //type-cast
+$foo = 1000.0246;   // $foo is an integer
+$bar = (integer) $foo;   // $bar is a boolean
+echo $bar; //1000
+echo "\n<br/>";
+?>
+<?php //type-cast-1
+$foo = 10;            // $foo is an integer
+$str = "$foo";        // $str is a string
+$fst = (string) $foo; // $fst is also a string
+
+// This prints out that "they are the same"
+if ($fst === $str) {
+    echo "they are the same";
+}
+?>
+<?php //type-cast-3
+$foo = 10;            // $foo is an integer
+$str = "$foo";        // $str is a string
+$fst = (string) $foo; // $fst is also a string
+
+echo gettype($foo) . ' -- ' . $foo  . "\n"; //integer -- 10
+echo gettype($str) . ' -- ' . $str  . "\n"; //string -- 10
+echo gettype($fst) . ' -- ' . $fst  . "\n"; // string -- 10
+
+$calc = $str + $foo + $fst;
+echo "---- Calc: " . $calc . ' -- '  . gettype($calc) . "\n"; //-- Calc: 30 -- integer
+
+// This prints out that "they are the same"
+if ($fst === $str) {
+    echo "they are the same";
+}
+?>
+<?php //type-jugling
+$foo = 0;  // $foo is integer (0)
+echo $foo . "\n\n"; //0
+$foo = "0";  // $foo is string (ASCII 48)
+echo $foo . "\n\n"; //0
+
+$foo += 2;   // $foo is now an integer (2)
+echo $foo . "\n\n"; //2
+
+$foo = $foo + 1.3;  // $foo is now a float (3.3)
+echo gettype($foo). $foo . "\n\n"; //double 3.3
+
+$foo = 5 + "10 Little Piggies"; // $foo is integer (15)
+echo $foo . "\n\n"; //15
+
+$foo = 5 + "10 Small Pigs";     // $foo is integer (15)
+echo $foo . "\n\n"; //15
+
+$foo = 5 + "10Small Pigs";     // $foo is integer (15)
+echo $foo . "\n\n"; //15
+?>
+<?php //type-static
+    function counter() {
+        static $count = 0;
+        $count++;
+        echo $count;
+    }
+    counter(); //1
+    counter(); //2
+    counter(); //3
+?>

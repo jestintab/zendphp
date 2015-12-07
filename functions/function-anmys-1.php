@@ -5,6 +5,6 @@ $greet = function($name, $age=99)
     printf("Hello %s\r\n", $name . ' ' . $age);
 };
 
-$greet('World');
-$greet('PHP');
+$greet('World'); //Hello World 99
+$greet('PHP'); //Hello PHP 99
 ?>

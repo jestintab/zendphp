@@ -16,14 +16,16 @@ class Cart
     {	
         $this->products[$product] = $quantity;       
     }
-    
+    public function getArray(){
+        return print_r($this->products);
+    }
     public function getQuantity($product)
     {
         return isset($this->products[$product]) ? $this->products[$product] :  FALSE;
     }
     
     public function getTotal($tax)
-    {
+    {   
         $total = 0.00;
         $unit = '';
         $callback = function ($quantity, $product) use ($tax, &$total, &$unit) {
@@ -38,12 +40,11 @@ class Cart
 }
 
 $my_cart = new Cart;
-
 // Add some items to the cart
 $my_cart->add('butter', 1);
 $my_cart->add('milk', 3);
 $my_cart->add('eggs', 6);
-
+$my_cart->getArray();
 // Print the total with a 5% sales tax.
 print $my_cart->getTotal(0.05) . "\n";
 // The result is 54.29

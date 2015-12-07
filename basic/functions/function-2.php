@@ -12,5 +12,5 @@ function table(){
      return $sum;
 }
 
-echo table(1,2.5,4.5) . PHP_EOL;
+echo table(1,2.5,4.5) . PHP_EOL; //8
 

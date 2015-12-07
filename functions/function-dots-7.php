@@ -1,6 +1,6 @@
 <?php
 //Example #7 Using ... to access variable arguments
-function sum(...$numbers) {
+function sum(...&$numbers) {
     $acc = 0;
     foreach ($numbers as $n) {
         $acc += $n;

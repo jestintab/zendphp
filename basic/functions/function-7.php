@@ -14,6 +14,6 @@ $greet = function($amt, $date=9) use ($percent, $year)
     return $str;
 }; 
 
-echo $greet(100) . PHP_EOL;
-echo $greet(300) . PHP_EOL;
+echo $greet(100) . PHP_EOL;//30 % of Rs. 100 is Rs. : 30 
+echo $greet(300) . PHP_EOL;// 30 % of Rs. 300 is Rs. : 90
 
